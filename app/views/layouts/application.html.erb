@@ -9,6 +9,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <nav class="navbar navbar-lewagon">
+      <%= link_to "Watch List", root_path, class: "navbar-brand" %>
+      <%= link_to "My lists", lists_path, class: "nav-link" %>
+    </nav>
+
     <%= yield :head %>
 
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
@@ -19,7 +24,7 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
