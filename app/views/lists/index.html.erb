@@ -1,9 +1,28 @@
-<h1>My lists</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path("classic_movies.jpg") %>');">
+  <div class="container">
+    <h1>My lists</h1>
+    <p>All your movie lists in one place.</p>
+  </div>
+</div>
 
-<%= link_to "New list", new_list_path %>
-
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list) %></li>
-  <% end %>
-</ul>
+<div class="container my-5">
+  <div class="row g-4">
+    <% @lists.each do |list| %>
+      <% poster = list.movies.first&.poster_url %>
+      <div class="col-12 col-md-6 col-lg-4">
+        <%= link_to list_path(list), class: "text-decoration-none text-dark" do %>
+          <div class="card-trip">
+            <%= image_tag(poster.presence || "classic_movies.jpg", alt: list.name) %>
+            <div class="card-trip-infos">
+              <div>
+                <h2><%= list.name %></h2>
+                <p>Your movie selection</p>
+              </div>
+              <h2 class="card-trip-pricing"><%= list.movies.count %> 🎬</h2>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
